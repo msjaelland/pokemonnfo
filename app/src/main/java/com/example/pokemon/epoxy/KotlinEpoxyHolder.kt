@@ -25,11 +25,6 @@ abstract class KotlinEpoxyHolder : EpoxyHolder() {
                 ?: throw IllegalStateException("View ID $id for '${prop.name}' not found.")
         }
 
-    protected fun <V : View> nullableBind(id: Int): ReadOnlyProperty<KotlinEpoxyHolder, V?> =
-        Lazy { holder: KotlinEpoxyHolder, _ ->
-            holder.view.findViewById(id) as? V
-        }
-
     /**
      * Taken from Kotterknife.
      * https://github.com/JakeWharton/kotterknife
