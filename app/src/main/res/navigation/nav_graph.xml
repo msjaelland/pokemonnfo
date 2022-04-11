@@ -24,5 +24,19 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/action_SecondFragment_to_PokeDetailsFragment"
+            app:destination="@id/PokeDetailsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/PokeDetailsFragment"
+        android:name="com.example.pokemon.details.PokeDetailsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_poke_details">
+
+
+    </fragment>
+
 </navigation>
