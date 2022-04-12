@@ -1,4 +1,4 @@
-package com.example.pokemon.details
+package com.example.pokemon.presentation.details
 
 import android.os.Bundle
 import android.view.LayoutInflater

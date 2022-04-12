@@ -1,3 +1,5 @@
+package com.example.pokemon.presentation.epoxy
+
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding

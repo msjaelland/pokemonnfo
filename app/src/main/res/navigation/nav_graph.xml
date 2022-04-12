@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.pokemon.FirstFragment"
+        android:name="com.example.pokemon.presentation.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.pokemon.SecondFragment"
+        android:name="com.example.pokemon.presentation.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/PokeDetailsFragment"
-        android:name="com.example.pokemon.details.PokeDetailsFragment"
+        android:name="com.example.pokemon.presentation.details.PokeDetailsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_poke_details">
 

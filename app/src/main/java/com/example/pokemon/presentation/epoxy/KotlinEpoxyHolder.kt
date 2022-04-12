@@ -1,3 +1,5 @@
+package com.example.pokemon.presentation.epoxy
+
 import android.view.View
 import com.airbnb.epoxy.EpoxyHolder
 import kotlin.properties.ReadOnlyProperty
