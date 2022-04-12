@@ -5,10 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemon.R
+import com.example.pokemon.api.PokemonAPI
 import com.example.pokemon.databinding.FragmentPokeDetailsBinding
+import com.example.pokemon.models.AllPokemonResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class PokeDetailsFragment: Fragment(R.layout.fragment_poke_details) {
+class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
 
     private var _binding: FragmentPokeDetailsBinding? = null
     private val binding get() = _binding!!
@@ -27,8 +34,34 @@ class PokeDetailsFragment: Fragment(R.layout.fragment_poke_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        testGetAllPokemons()
+
         binding.pokeDetailsRV.setController(controller)
         controller.requestModelBuild()
+    }
+
+    private fun testGetAllPokemons() {
+        val pokemonAPI = PokemonAPI.create().getAllPokemons()
+
+        pokemonAPI.enqueue(object : Callback<AllPokemonResponse?> {
+            override fun onResponse(
+                call: Call<AllPokemonResponse?>,
+                response: Response<AllPokemonResponse?>
+            ) {
+                response.body()?.let {
+                    it.results?.forEach {entry ->
+                        println(entry.name)
+                    }
+                    controller.pokemons = it
+                    controller.isLoading = false
+                    controller.requestModelBuild()
+                }
+            }
+
+            override fun onFailure(call: Call<AllPokemonResponse?>, t: Throwable) {
+
+            }
+        })
     }
 
     override fun onDestroyView() {
