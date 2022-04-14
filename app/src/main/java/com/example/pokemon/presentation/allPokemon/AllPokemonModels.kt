@@ -1,4 +1,4 @@
-package com.example.pokemon.presentation.details
+package com.example.pokemon.presentation.allPokemon
 
 import com.example.pokemon.presentation.epoxy.KotlinEpoxyHolder
 import android.widget.TextView
@@ -8,7 +8,7 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.pokemon.R
 
 @EpoxyModelClass
-abstract class PokeDetailsModel : EpoxyModelWithHolder<PokeDetailsModel.ViewHolder>() {
+abstract class PokemonName : EpoxyModelWithHolder<PokemonName.ViewHolder>() {
     override fun getDefaultLayout(): Int = R.layout.item_poke_details
 
     @EpoxyAttribute

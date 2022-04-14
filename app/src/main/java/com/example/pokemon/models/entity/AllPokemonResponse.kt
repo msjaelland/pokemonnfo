@@ -1,4 +1,4 @@
-package com.example.pokemon.models
+package com.example.pokemon.models.entity
 
 data class AllPokemonResponse(
     val count: Int? = null,

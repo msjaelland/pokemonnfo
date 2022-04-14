@@ -1,6 +1,6 @@
 package com.example.pokemon.api
 
-import com.example.pokemon.models.AllPokemonResponse
+import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.util.Constants
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -10,7 +10,7 @@ import retrofit2.http.GET
 interface PokemonAPI {
 
     @GET("pokemon")
-    fun getAllPokemons(): Call<AllPokemonResponse>
+    fun getAllPokemon(): Call<AllPokemonResponse>
 
     companion object {
         fun create(): PokemonAPI {

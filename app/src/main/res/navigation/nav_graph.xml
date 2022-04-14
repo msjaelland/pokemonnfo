@@ -12,22 +12,8 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.pokemon.presentation.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-
-        <action
-            android:id="@+id/action_SecondFragment_to_PokeDetailsFragment"
-            app:destination="@id/PokeDetailsFragment" />
+            android:id="@+id/action_FirstFragment_to_All_Pokemon"
+            app:destination="@id/AllPokemonFragment" />
     </fragment>
 
     <fragment
@@ -35,8 +21,13 @@
         android:name="com.example.pokemon.presentation.details.PokeDetailsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_poke_details">
+    </fragment>
 
-
+    <fragment
+        android:id="@+id/AllPokemonFragment"
+        android:name="com.example.pokemon.presentation.allPokemon.AllPokemonFragment"
+        android:label="@string/all_pokemon_fragment_label"
+        tools:layout="@layout/fragment_all_pokemon">
     </fragment>
 
 </navigation>

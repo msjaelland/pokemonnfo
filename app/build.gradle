@@ -64,4 +64,9 @@ dependencies {
 
     //Animations
     implementation "com.airbnb.android:lottie:5.0.3"
+
+    // LiveData and ViewModel
+    def lifecycleVersion = "2.2.0"
+    implementation("androidx.lifecycle:lifecycle-extensions:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
 }
