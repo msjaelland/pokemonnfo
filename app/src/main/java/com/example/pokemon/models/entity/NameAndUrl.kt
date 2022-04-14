@@ -1,6 +1,6 @@
 package com.example.pokemon.models.entity
 
-data class PokemonListEntryResponse(
+data class NameAndUrl(
     val name: String? = null,
     val url: String? = null
 )

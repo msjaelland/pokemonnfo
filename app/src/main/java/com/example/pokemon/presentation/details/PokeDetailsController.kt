@@ -4,6 +4,7 @@ import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.presentation.allPokemon.pokemonName
 import com.example.pokemon.presentation.common.loading
+import com.example.pokemon.presentation.common.smallSprite
 
 class PokeDetailsController : EpoxyController() {
 
@@ -32,6 +33,10 @@ class PokeDetailsController : EpoxyController() {
             pokemonName {
                 id("weight")
                 name(it.weight.toString())
+            }
+            smallSprite {
+                id("image")
+                url(it.sprites?.front_default)
             }
         }
 
