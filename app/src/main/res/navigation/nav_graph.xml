@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_FirstFragment_to_All_Pokemon"
             app:destination="@id/AllPokemonFragment" />
+
+        <action
+            android:id="@+id/action_FirstFragment_to_Details"
+            app:destination="@id/PokeDetailsFragment" />
     </fragment>
 
     <fragment

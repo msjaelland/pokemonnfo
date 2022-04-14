@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.pokemon.R
-import com.example.pokemon.api.PokemonAPI
 import com.example.pokemon.databinding.FragmentPokeDetailsBinding
-import com.example.pokemon.models.entity.AllPokemonResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.pokemon.viewModels.details.PokeDetailsViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
 
@@ -19,6 +19,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
     private val binding get() = _binding!!
 
     private val controller by lazy { PokeDetailsController() }
+    private val viewModel: PokeDetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,34 +33,20 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        testGetAllPokemons()
-
         binding.pokeDetailsRV.setController(controller)
+        observeData()
+        viewModel.getPokemon("ditto")
         controller.requestModelBuild()
     }
 
-    private fun testGetAllPokemons() {
-        val pokemonAPI = PokemonAPI.create().getAllPokemon()
-
-        pokemonAPI.enqueue(object : Callback<AllPokemonResponse?> {
-            override fun onResponse(
-                call: Call<AllPokemonResponse?>,
-                response: Response<AllPokemonResponse?>
-            ) {
-                response.body()?.let {
-                    it.results?.forEach {entry ->
-                        println(entry.name)
-                    }
-                    controller.pokemons = it
-                    controller.isLoading = false
-                    controller.requestModelBuild()
-                }
+    private fun observeData() {
+        viewModel.pokemonDetails
+            .onEach {
+                controller.isLoading = it.loading
+                controller.pokemon = it.pokemon
+                controller.requestModelBuild()
             }
-
-            override fun onFailure(call: Call<AllPokemonResponse?>, t: Throwable) {
-
-            }
-        })
+            .launchIn(lifecycleScope)
     }
 
     override fun onDestroyView() {

@@ -26,9 +26,6 @@ class AllPokemonViewModel : ViewModel() {
                 response: Response<AllPokemonResponse?>
             ) {
                 response.body()?.let {
-                    it.results?.forEach { entry ->
-                        println(entry.name)
-                    }
                     _stateFlow.value = _stateFlow.value.copy(
                         loading = false,
                         hasMoreResults = true,

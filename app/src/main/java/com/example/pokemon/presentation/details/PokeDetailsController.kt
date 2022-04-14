@@ -1,12 +1,13 @@
 package com.example.pokemon.presentation.details
 
 import com.airbnb.epoxy.EpoxyController
-import com.example.pokemon.models.entity.AllPokemonResponse
+import com.example.pokemon.models.entity.PokemonResponse
+import com.example.pokemon.presentation.allPokemon.pokemonName
 import com.example.pokemon.presentation.common.loading
 
 class PokeDetailsController : EpoxyController() {
 
-    var pokemons: AllPokemonResponse? = null
+    var pokemon: PokemonResponse? = null
     var isLoading: Boolean = true
 
     override fun buildModels() {
@@ -19,5 +20,20 @@ class PokeDetailsController : EpoxyController() {
     }
 
     private fun buildDetails() {
+        pokemon?.let {
+            pokemonName {
+                id("name")
+                name(it.name)
+            }
+            pokemonName {
+                id("height")
+                name(it.height.toString())
+            }
+            pokemonName {
+                id("weight")
+                name(it.weight.toString())
+            }
+        }
+
     }
 }

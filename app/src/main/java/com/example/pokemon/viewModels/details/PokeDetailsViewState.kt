@@ -1,5 +1,8 @@
 package com.example.pokemon.viewModels.details
 
-class PokeDetailsViewState(
-    val loading: Boolean = true
+import com.example.pokemon.models.entity.PokemonResponse
+
+data class PokeDetailsViewState(
+    val loading: Boolean = true,
+    val pokemon: PokemonResponse? = null
 )
