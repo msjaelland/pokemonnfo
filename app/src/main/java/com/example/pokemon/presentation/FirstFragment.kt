@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.pokemon.R
 import com.example.pokemon.databinding.FragmentFirstBinding
+import com.example.pokemon.presentation.details.PokeDetailsFragment
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,7 +39,9 @@ class FirstFragment : Fragment() {
         }
 
         binding.detailsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_Details)
+            var bundle = Bundle()
+            bundle.putString(PokeDetailsFragment.PokemonIdArg, "bulbasaur")
+            findNavController().navigate(R.id.action_FirstFragment_to_Details, bundle)
         }
     }
 
