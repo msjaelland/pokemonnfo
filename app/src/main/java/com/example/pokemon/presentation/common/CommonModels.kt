@@ -1,5 +1,6 @@
 package com.example.pokemon.presentation.common
 
+import android.widget.Button
 import android.widget.ImageView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
@@ -12,14 +13,8 @@ import com.example.pokemon.util.loadImage
 abstract class LoadingModel : EpoxyModelWithHolder<LoadingModel.ViewHolder>() {
     override fun getDefaultLayout(): Int = R.layout.item_loading_view
 
-    override fun bind(holder: ViewHolder) {
-        super.bind(holder)
-    }
-
     inner class ViewHolder : KotlinEpoxyHolder() {
-
     }
-
 }
 
 @EpoxyModelClass
@@ -41,5 +36,24 @@ abstract class SmallSpriteModel : EpoxyModelWithHolder<SmallSpriteModel.ViewHold
     inner class ViewHolder : KotlinEpoxyHolder() {
         val pokemonIv: ImageView by bind(R.id.spriteIv)
     }
+}
 
+@EpoxyModelClass
+abstract class LoadMoreButtonModel : EpoxyModelWithHolder<LoadMoreButtonModel.ViewHolder>() {
+    override fun getDefaultLayout(): Int = R.layout.item_load_more_button
+
+    @EpoxyAttribute
+    var loadMoreText: String? = null
+
+    override fun bind(holder: LoadMoreButtonModel.ViewHolder) {
+        super.bind(holder)
+
+        loadMoreText?.let {
+            holder.loadMoreButton.text = it
+        }
+    }
+
+    inner class ViewHolder : KotlinEpoxyHolder() {
+        val loadMoreButton: Button by bind(R.id.loadMoreBtn)
+    }
 }

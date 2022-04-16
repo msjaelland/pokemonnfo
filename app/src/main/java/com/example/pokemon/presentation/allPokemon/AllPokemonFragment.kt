@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.pokemon.R
 import com.example.pokemon.databinding.FragmentPokeDetailsBinding
+import com.example.pokemon.presentation.details.PokeDetailsFragment
 import com.example.pokemon.viewModels.allPokemon.AllPokemonViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,7 +20,7 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
     private var _binding: FragmentPokeDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val controller by lazy { AllPokemonController() }
+    private val controller by lazy { AllPokemonController(resources) }
     private val viewModel: AllPokemonViewModel by viewModels()
 
     override fun onCreateView(
@@ -34,9 +36,17 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.pokeDetailsRV.setController(controller)
+        controller.onEntryClick = ::navigateToDetails
+
         observeData()
         viewModel.loadMorePokemon()
         controller.requestModelBuild()
+    }
+
+    private fun navigateToDetails(id: String) {
+        var bundle = Bundle()
+        bundle.putString(PokeDetailsFragment.PokemonIdArg, id)
+        findNavController().navigate(R.id.action_List_to_Details, bundle)
     }
 
     private fun observeData() {

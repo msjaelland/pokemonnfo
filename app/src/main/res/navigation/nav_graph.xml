@@ -32,6 +32,10 @@
         android:name="com.example.pokemon.presentation.allPokemon.AllPokemonFragment"
         android:label="@string/all_pokemon_fragment_label"
         tools:layout="@layout/fragment_all_pokemon">
+
+        <action
+            android:id="@+id/action_List_to_Details"
+            app:destination="@id/PokeDetailsFragment" />
     </fragment>
 
 </navigation>
