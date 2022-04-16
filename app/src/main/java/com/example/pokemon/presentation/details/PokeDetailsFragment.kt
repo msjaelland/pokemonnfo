@@ -35,7 +35,9 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
 
         binding.pokeDetailsRV.setController(controller)
         observeData()
-        viewModel.getPokemon("ditto")
+        arguments?.getString(PokemonIdArg)?.let {
+            viewModel.getPokemon(it)
+        }
         controller.requestModelBuild()
     }
 
@@ -52,5 +54,9 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val PokemonIdArg = "pokemonIdArg"
     }
 }
