@@ -36,11 +36,15 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.pokeDetailsRV.setController(controller)
-        controller.onEntryClick = ::navigateToDetails
+        setupController()
 
         observeData()
         viewModel.loadMorePokemon()
         controller.requestModelBuild()
+    }
+
+    private fun setupController() {
+        controller.onEntryClick = ::navigateToDetails
     }
 
     private fun navigateToDetails(id: String) {
@@ -53,7 +57,8 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
         viewModel.allPokemonState
             .onEach {
                 controller.isLoading = it.loading
-                controller.pokemons = it.allPokemon
+                controller.pokemonResponse = it.allPokemon
+                controller.pokemonList = it.pokemonList
                 controller.requestModelBuild()
             }
             .launchIn(lifecycleScope)

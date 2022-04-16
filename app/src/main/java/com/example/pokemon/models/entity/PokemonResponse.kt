@@ -8,5 +8,6 @@ data class PokemonResponse(
     val sprites: Sprites? = null,
     val stats: List<Stat>? = null,
     val abilities: List<Ability>? = null,
-    val types: List<Type>? = null
+    val types: List<Type>? = null,
+    val id: Int? = null
 )

@@ -3,7 +3,6 @@ package com.example.pokemon.api
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.util.Constants
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -13,13 +12,13 @@ import retrofit2.http.Query
 interface PokemonAPI {
 
     @GET("pokemon")
-    fun getAllPokemon(
+    suspend fun getAllPokemonList(
         @Query("limit") limit: Int = Constants.QUERY_PAGE_SIZE,
         @Query("offset") offset: Int = 0,
-    ): Call<AllPokemonResponse>
+    ): AllPokemonResponse
 
     @GET("pokemon/{id}")
-    fun getSinglePokemon(@Path("id") id: String): Call<PokemonResponse>
+    suspend fun getPokemon(@Path("id") id: String): PokemonResponse
 
     companion object {
         fun create(): PokemonAPI {
