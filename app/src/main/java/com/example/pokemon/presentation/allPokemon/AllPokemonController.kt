@@ -14,6 +14,9 @@ class AllPokemonController(
     var pokemonList: List<PokemonResponse> = listOf()
     var isLoading: Boolean = true
     var onEntryClick: (String) -> Unit = {}
+    var onNextClick: () -> Unit = {}
+    var onPreviousClick: () -> Unit = {}
+
 
     override fun buildModels() {
         when (isLoading) {
@@ -26,17 +29,29 @@ class AllPokemonController(
 
     private fun buildList() {
         val onEntryClick = onEntryClick
+        val onPreviousClick = onPreviousClick
+        val onNextClick = onNextClick
+        val resources = resources
 
         pokemonList.forEach { pokemon ->
-            pokemonName {
+            pokemonListEntry {
                 id("pokedetails${pokemon.name}")
-                name(pokemon.name)
+                pokemon(pokemon)
                 onClick {
                     pokemon?.name?.let { name ->
                         onEntryClick.invoke(name)
                     }
                 }
             }
+        }
+
+        paginationButton {
+            id("paginationButtons")
+            hasNext(true)
+            hasPrevious(false)
+            resources(resources)
+            onPreviousClick(onPreviousClick)
+            onNextClick(onNextClick)
         }
     }
 }

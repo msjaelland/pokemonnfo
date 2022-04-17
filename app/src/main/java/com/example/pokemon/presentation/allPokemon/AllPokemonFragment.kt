@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -39,17 +40,18 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
         setupController()
 
         observeData()
-        viewModel.loadMorePokemon()
+        viewModel.loadNextPokemon()
         controller.requestModelBuild()
     }
 
     private fun setupController() {
         controller.onEntryClick = ::navigateToDetails
+        controller.onPreviousClick = viewModel::loadPreviousPokemon
+        controller.onNextClick = viewModel::loadNextPokemon
     }
 
     private fun navigateToDetails(id: String) {
-        var bundle = Bundle()
-        bundle.putString(PokeDetailsFragment.PokemonIdArg, id)
+        var bundle = bundleOf(PokeDetailsFragment.PokemonIdArg to id)
         findNavController().navigate(R.id.action_List_to_Details, bundle)
     }
 

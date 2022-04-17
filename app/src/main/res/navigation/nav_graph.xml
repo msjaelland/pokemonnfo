@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/PokeDetailsFragment"
         android:name="com.example.pokemon.presentation.details.PokeDetailsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/poke_details_fragment_label"
         tools:layout="@layout/fragment_poke_details">
     </fragment>
 

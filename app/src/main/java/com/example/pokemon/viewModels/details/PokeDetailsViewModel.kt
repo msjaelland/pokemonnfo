@@ -24,7 +24,6 @@ class PokeDetailsViewModel : ViewModel() {
         _stateFlow.value = _stateFlow.value.copy(
             loading = true
         )
-
         viewModelScope.launch(coroutineExceptionHandler) {
             getSinglePokemon(id)
         }
