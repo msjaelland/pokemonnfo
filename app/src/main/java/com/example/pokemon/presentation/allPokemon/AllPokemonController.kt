@@ -2,7 +2,6 @@ package com.example.pokemon.presentation.allPokemon
 
 import android.content.res.Resources
 import com.airbnb.epoxy.EpoxyController
-import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.presentation.common.loading
 
@@ -10,7 +9,6 @@ class AllPokemonController(
     val resources: Resources
 ) : EpoxyController() {
 
-    var pokemonResponse: AllPokemonResponse? = null
     var pokemonList: List<PokemonResponse> = listOf()
     var isLoading: Boolean = true
     var onEntryClick: (String) -> Unit = {}
@@ -44,6 +42,7 @@ class AllPokemonController(
                         onEntryClick.invoke(name)
                     }
                 }
+                resources(resources)
             }
         }
 

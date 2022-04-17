@@ -7,5 +7,4 @@ class PaginationResult(
     var nextOffset: Int? = 0,
     var previousLimit: Int? = null,
     var previousOffSet: Int? = null,
-    var totalResults: Int? = null
 )

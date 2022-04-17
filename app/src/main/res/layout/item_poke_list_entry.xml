@@ -2,35 +2,88 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pokemonListEntryOuterCl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/default_margin_horizontal_phone"
+
     android:layout_marginVertical="4dp"
-    android:id="@+id/pokemonListEntryOuterCl">
+    android:background="@color/material_dynamic_neutral95">
 
     <ImageView
         android:id="@+id/pokemonSpriteIv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="4dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-    <TextView
-        android:id="@+id/pokemonNameTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/pokemonTextLl"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pokemonSpriteIv"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Charmander" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/pokemonIdTv"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/pokemonNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Charmander" />
+
+        <TextView
+            android:id="@+id/pokemonIdTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="#001" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pokemonStatsLl"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pokemonHpTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="Base exp: 100" />
+
+        <TextView
+            android:id="@+id/pokemonBaseXpTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="HP: 45" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/pokemonSpriteIv"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonNameTv"
-        tools:text="#001" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/pokemonTypesRc"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalGuideline" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

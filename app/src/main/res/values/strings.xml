@@ -11,4 +11,7 @@
 
     <string name="Details">Details</string>
     <string name="List">List</string>
+
+    <string name="base_experience">Base exp:</string>
+    <string name="hp">HP:</string>
 </resources>

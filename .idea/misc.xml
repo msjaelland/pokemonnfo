@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
+        <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/drawable/ic_rounded_corner.xml" value="0.2105" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/activity_main.xml" value="0.3605072463768116" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/content_main.xml" value="0.3605072463768116" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/fragment_all_pokemon.xml" value="0.18802083333333333" />
@@ -11,7 +12,10 @@
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/fragment_poke_details.xml" value="0.1" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_load_more_button.xml" value="0.23020833333333332" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_loading_view.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_pagination_buttons.xml" value="0.3605072463768116" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_poke_details.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_poke_list_entry.xml" value="0.33" />
+        <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_poke_type.xml" value="0.67" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_sprite_small.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.10326086956521739" />
         <entry key="app/src/main/res/layout/item_pagination_buttons.xml" value="0.2111111111111111" />
