@@ -5,7 +5,6 @@ import com.example.pokemon.models.entity.PokemonResponse
 
 data class AllPokemonViewState(
     val loading: Boolean = true,
-    val allPokemon: AllPokemonResponse? = null,
     val pokemonList: List<PokemonResponse> = listOf(),
     
     val hasNext: Boolean = true,

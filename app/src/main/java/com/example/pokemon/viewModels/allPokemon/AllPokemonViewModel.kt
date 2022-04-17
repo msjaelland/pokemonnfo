@@ -67,11 +67,14 @@ class AllPokemonViewModel : ViewModel() {
         detailedList.sortBy { x -> x.id }
         _stateFlow.value = _stateFlow.value.copy(
             loading = false,
-            allPokemon = result,
             pokemonList = detailedList,
             hasNext = result.next != null,
             hasPrevious = result.previous != null
         )
+    }
+
+    fun hasData(): Boolean {
+        return _stateFlow.value.pokemonList.isNotEmpty()
     }
 
     private fun updatePaginationResult(response: AllPokemonResponse) {

@@ -40,7 +40,9 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
         setupController()
 
         observeData()
-        viewModel.loadNextPokemon()
+        if (!viewModel.hasData()) {
+            viewModel.loadNextPokemon()
+        }
         controller.requestModelBuild()
     }
 
