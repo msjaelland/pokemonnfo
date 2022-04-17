@@ -1,6 +1,7 @@
 package com.example.pokemon.viewModels.allPokemon
 
-import androidx.lifecycle.ViewModel
+import android.net.Uri
+import  androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemon.api.PokemonRepository
 import com.example.pokemon.models.PaginationResult
@@ -28,13 +29,21 @@ class AllPokemonViewModel : ViewModel() {
 
     fun loadNextPokemon() {
         viewModelScope.launch(coroutineExceptionHandler) {
-            loadDetailedPage(pagination.nextLimit, pagination.nextOffset)
+            safeLet(
+                pagination.nextLimit,
+                pagination.nextOffset
+            ) { nextLimit, nextOffset ->
+                loadDetailedPage(nextLimit, nextOffset)
+            }
         }
     }
 
     fun loadPreviousPokemon() {
         viewModelScope.launch(coroutineExceptionHandler) {
-            safeLet(pagination.previousLimit, pagination.previousOffSet){ previousLimit, previousOffset ->
+            safeLet(
+                pagination.previousLimit,
+                pagination.previousOffSet
+            ) { previousLimit, previousOffset ->
                 loadDetailedPage(previousLimit, previousOffset)
             }
         }
@@ -46,6 +55,7 @@ class AllPokemonViewModel : ViewModel() {
         )
 
         val result = pokemonRepository.getAllPokemon(limit, offset)
+        updatePaginationResult(result)
         val detailedList = mutableListOf<PokemonResponse>()
 
         result.results?.forEach { pokemon ->
@@ -58,11 +68,26 @@ class AllPokemonViewModel : ViewModel() {
         _stateFlow.value = _stateFlow.value.copy(
             loading = false,
             allPokemon = result,
-            pokemonList = detailedList
+            pokemonList = detailedList,
+            hasNext = result.next != null,
+            hasPrevious = result.previous != null
         )
     }
 
-    private fun updatePaginationResult(response: AllPokemonResponse){
-        
+    private fun updatePaginationResult(response: AllPokemonResponse) {
+        pagination.nextLimit = if (response.next == null) null else
+            Uri.parse(response.next).getQueryParameter(Limit)?.toInt()
+        pagination.nextOffset = if (response.next == null) null else
+            Uri.parse(response.next).getQueryParameter(Offset)?.toInt()
+        pagination.previousLimit = if (response.previous == null) null else
+            Uri.parse(response.previous).getQueryParameter(Limit)?.toInt()
+        pagination.previousOffSet = if (response.previous == null) null else
+            Uri.parse(response.previous).getQueryParameter(Offset)?.toInt()
+
+    }
+
+    companion object {
+        const val Limit = "limit"
+        const val Offset = "offset"
     }
 }

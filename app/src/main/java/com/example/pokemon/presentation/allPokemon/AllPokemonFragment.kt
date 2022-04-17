@@ -61,6 +61,8 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
                 controller.isLoading = it.loading
                 controller.pokemonResponse = it.allPokemon
                 controller.pokemonList = it.pokemonList
+                controller.hasNext = it.hasNext
+                controller.hasPrevious = it.hasPrevious
                 controller.requestModelBuild()
             }
             .launchIn(lifecycleScope)

@@ -16,6 +16,8 @@ class AllPokemonController(
     var onEntryClick: (String) -> Unit = {}
     var onNextClick: () -> Unit = {}
     var onPreviousClick: () -> Unit = {}
+    var hasNext: Boolean = true
+    var hasPrevious: Boolean = false
 
 
     override fun buildModels() {
@@ -45,10 +47,13 @@ class AllPokemonController(
             }
         }
 
+        val hasNext = hasNext
+        val hasPrevious = hasPrevious
+
         paginationButton {
             id("paginationButtons")
-            hasNext(true)
-            hasPrevious(false)
+            hasNext(hasNext)
+            hasPrevious(hasPrevious)
             resources(resources)
             onPreviousClick(onPreviousClick)
             onNextClick(onNextClick)
