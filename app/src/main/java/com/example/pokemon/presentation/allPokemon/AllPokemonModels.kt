@@ -63,8 +63,10 @@ abstract class PokemonListEntryModel : EpoxyModelWithHolder<PokemonListEntryMode
             pokeNameTv.text = pokemon?.name
             pokemonIdTv.text = "#${pokemon?.id?.addZeroPadding()}"
 
-            pokemonHpTv.text = resources?.getString(R.string.hp) + " " + getStat(StatHitpoints)?.base_stat.toString()
-            pokemonBaseXpTv.text = resources?.getString(R.string.base_experience) + " " + pokemon?.base_experience.toString()
+            pokemonHpTv.text =
+                resources?.getString(R.string.hp) + " " + getStat(StatHitpoints)?.base_stat.toString()
+            pokemonBaseXpTv.text =
+                resources?.getString(R.string.base_experience) + " " + pokemon?.base_experience.toString()
 
             pokemonSpriteIv.loadImage(pokemon?.sprites?.front_default)
             pokemonListEntryOuterCl.setOnClickListener {
@@ -81,7 +83,7 @@ abstract class PokemonListEntryModel : EpoxyModelWithHolder<PokemonListEntryMode
     private fun EpoxyController.buildTypes() {
         pokemon?.types?.forEach { type ->
             pokemonType {
-                id("type${type.type?.name}")
+                id("pokemon:${pokemon?.id}type:${type.type?.name}")
                 type(type)
             }
         }
