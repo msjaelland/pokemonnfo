@@ -17,6 +17,14 @@ abstract class LoadingModel : EpoxyModelWithHolder<LoadingModel.ViewHolder>() {
 }
 
 @EpoxyModelClass
+abstract class HeightSpacingModel : EpoxyModelWithHolder<HeightSpacingModel.ViewHolder>() {
+    override fun getDefaultLayout(): Int = R.layout.item_height_spacing
+
+    inner class ViewHolder : KotlinEpoxyHolder() {
+    }
+}
+
+@EpoxyModelClass
 abstract class SmallSpriteModel : EpoxyModelWithHolder<SmallSpriteModel.ViewHolder>() {
     override fun getDefaultLayout(): Int = R.layout.item_sprite_small
 

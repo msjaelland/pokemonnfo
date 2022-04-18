@@ -8,4 +8,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AbilityNameStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

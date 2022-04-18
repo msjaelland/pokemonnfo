@@ -3,10 +3,12 @@ package com.example.pokemon.presentation.details
 import android.content.res.Resources
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.R
+import com.example.pokemon.models.entity.AbilityDetailed
 import com.example.pokemon.models.entity.NameAndUrl
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.models.entity.Stat
 import com.example.pokemon.presentation.allPokemon.pokemonName
+import com.example.pokemon.presentation.common.heightSpacing
 import com.example.pokemon.presentation.common.loading
 import com.example.pokemon.presentation.common.smallSprite
 
@@ -16,6 +18,7 @@ class PokeDetailsController(
 
     var pokemon: PokemonResponse? = null
     var isLoading: Boolean = true
+    var abilities: List<AbilityDetailed> = listOf()
 
     override fun buildModels() {
         when (isLoading) {
@@ -25,6 +28,21 @@ class PokeDetailsController(
             false -> {
                 buildDetails()
                 buildStats(resources)
+                buildAbilities(resources)
+            }
+        }
+    }
+
+    private fun buildAbilities(resources: Resources){
+        sectionHeader {
+            id("abilitySectionHeader")
+            text(resources.getString(R.string.abilities))
+        }
+        abilities.forEach{ ability ->
+            pokemonAbility {
+                id("ability:${ability.name}")
+                effect(ability.getEnglishEffect())
+                name(ability.name)
             }
         }
     }
@@ -52,6 +70,10 @@ class PokeDetailsController(
             id("totalStats")
             resources(resources)
             stat(totalStat)
+        }
+
+        heightSpacing {
+            id("statsHeightSpacing")
         }
     }
 

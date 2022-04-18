@@ -8,6 +8,7 @@ import com.example.pokemon.models.PaginationResult
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.util.Constants
+import com.example.pokemon.util.extractQueryParameter
 import com.example.pokemon.util.safeLet
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -79,13 +80,13 @@ class AllPokemonViewModel : ViewModel() {
 
     private fun updatePaginationResult(response: AllPokemonResponse) {
         pagination.nextLimit = if (response.next == null) null else
-            Uri.parse(response.next).getQueryParameter(Limit)?.toInt()
+            response.next.extractQueryParameter(Limit)?.toInt()
         pagination.nextOffset = if (response.next == null) null else
-            Uri.parse(response.next).getQueryParameter(Offset)?.toInt()
+            response.next.extractQueryParameter(Offset)?.toInt()
         pagination.previousLimit = if (response.previous == null) null else
-            Uri.parse(response.previous).getQueryParameter(Limit)?.toInt()
+            response.previous.extractQueryParameter(Limit)?.toInt()
         pagination.previousOffSet = if (response.previous == null) null else
-            Uri.parse(response.previous).getQueryParameter(Offset)?.toInt()
+            response.previous.extractQueryParameter(Offset)?.toInt()
 
     }
 

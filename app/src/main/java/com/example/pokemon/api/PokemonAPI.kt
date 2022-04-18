@@ -1,5 +1,6 @@
 package com.example.pokemon.api
 
+import com.example.pokemon.models.entity.AbilityDetailed
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.util.Constants
@@ -19,6 +20,9 @@ interface PokemonAPI {
 
     @GET("pokemon/{id}")
     suspend fun getPokemon(@Path("id") id: String): PokemonResponse
+
+    @GET("ability/{id}")
+    suspend fun getAbility(@Path("id") id: String): AbilityDetailed
 
     companion object {
         fun create(): PokemonAPI {

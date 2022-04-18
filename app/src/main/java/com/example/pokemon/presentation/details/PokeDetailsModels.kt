@@ -8,6 +8,7 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.pokemon.R
+import com.example.pokemon.models.entity.Effect
 import com.example.pokemon.models.entity.Stat
 
 @EpoxyModelClass
@@ -37,6 +38,31 @@ abstract class PokemonStatsModel : EpoxyModelWithHolder<PokemonStatsModel.ViewHo
         val pokeStatTv: TextView by bind(R.id.pokeStatsTv)
         val pokeStatValueTv: TextView by bind(R.id.pokeStatsValueTv)
         val statIconIv: ImageView by bind(R.id.statIconIv)
+    }
+}
+
+@EpoxyModelClass
+abstract class PokemonAbilityModel : EpoxyModelWithHolder<PokemonAbilityModel.ViewHolder>() {
+    override fun getDefaultLayout(): Int = R.layout.item_poke_ability
+
+    @EpoxyAttribute
+    var effect: Effect? = null
+
+    @EpoxyAttribute
+    var name: String? = null
+
+    override fun bind(holder: ViewHolder) {
+        super.bind(holder)
+
+        with(holder) {
+            pokeAbilityNameTv.text = name
+            pokeAbilityFullDescriptionTv.text = effect?.effect
+        }
+    }
+
+    inner class ViewHolder : KotlinEpoxyHolder() {
+        val pokeAbilityNameTv: TextView by bind(R.id.pokeAbilityNameTv)
+        val pokeAbilityFullDescriptionTv: TextView by bind(R.id.pokeAbilityFullDescriptionTv)
     }
 }
 

@@ -46,6 +46,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
             .onEach {
                 controller.isLoading = it.loading
                 controller.pokemon = it.pokemon
+                controller.abilities = it.detailedAbilities
                 controller.requestModelBuild()
             }
             .launchIn(lifecycleScope)
