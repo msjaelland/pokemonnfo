@@ -3,7 +3,9 @@ package com.example.pokemon.presentation.details
 import android.content.res.Resources
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.R
+import com.example.pokemon.models.entity.NameAndUrl
 import com.example.pokemon.models.entity.PokemonResponse
+import com.example.pokemon.models.entity.Stat
 import com.example.pokemon.presentation.allPokemon.pokemonName
 import com.example.pokemon.presentation.common.loading
 import com.example.pokemon.presentation.common.smallSprite
@@ -33,6 +35,7 @@ class PokeDetailsController(
             text(resources.getString(R.string.base_stats))
         }
 
+        var statTotal = 0
         pokemon?.stats?.forEach { stat ->
             val name = pokemon?.name
             pokemonStats {
@@ -40,6 +43,15 @@ class PokeDetailsController(
                 resources(resources)
                 stat(stat)
             }
+            stat?.base_stat?.let {
+                statTotal += it
+            }
+        }
+        val totalStat = Stat(base_stat = statTotal, stat = NameAndUrl(name = Stat.Total))
+        pokemonStats {
+            id("totalStats")
+            resources(resources)
+            stat(totalStat)
         }
     }
 

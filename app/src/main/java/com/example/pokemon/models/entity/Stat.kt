@@ -16,6 +16,7 @@ data class Stat(
             StatDefense -> resources.getDrawable(R.drawable.ic_shield_icon)
             StatSpecialAttack -> resources.getDrawable(R.drawable.ic_sword_icon)
             StatSpecialDefense -> resources.getDrawable(R.drawable.ic_shield_icon)
+            Total -> resources.getDrawable(R.drawable.ic_sum_icon)
             else -> resources.getDrawable(R.drawable.ic_speed_icon)
         }
     }
@@ -27,5 +28,6 @@ data class Stat(
         const val StatSpecialAttack = "special-attack"
         const val StatSpecialDefense = "special-defense"
         const val StatSpeed = "speed"
+        const val Total = "total"
     }
 }
