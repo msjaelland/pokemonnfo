@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/drawable/ic_rounded_corner.xml" value="0.2105" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/activity_main.xml" value="0.3605072463768116" />
@@ -17,10 +18,16 @@
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_poke_list_entry.xml" value="0.33" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_poke_type.xml" value="0.67" />
         <entry key="..\:/Users/mosj/Documents/Git/Pokemon/app/src/main/res/layout/item_sprite_small.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/ic_heart_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_shield_icon.xml" value="0.127" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.10326086956521739" />
         <entry key="app/src/main/res/layout/item_pagination_buttons.xml" value="0.2111111111111111" />
         <entry key="app/src/main/res/layout/item_poke_details.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/item_poke_list_entry.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/item_poke_stat.xml" value="0.1471698113207547" />
+        <entry key="app/src/main/res/layout/item_poke_stats.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_poke_type.xml" value="0.17346014492753623" />
+        <entry key="app/src/main/res/layout/item_section_header.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_sprite_small.xml" value="0.19610507246376813" />
       </map>
     </option>

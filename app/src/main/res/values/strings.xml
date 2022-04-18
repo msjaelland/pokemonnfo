@@ -14,4 +14,6 @@
 
     <string name="base_experience">Base exp:</string>
     <string name="hp">HP:</string>
+
+    <string name="base_stats">Base stats</string>
 </resources>

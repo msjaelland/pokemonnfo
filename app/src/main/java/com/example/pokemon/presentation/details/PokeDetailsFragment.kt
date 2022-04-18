@@ -18,7 +18,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
     private var _binding: FragmentPokeDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val controller by lazy { PokeDetailsController() }
+    private val controller by lazy { PokeDetailsController(resources) }
     private val viewModel: PokeDetailsViewModel by viewModels()
 
     override fun onCreateView(

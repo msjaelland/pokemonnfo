@@ -23,16 +23,14 @@ class AllPokemonController(
             true -> loading {
                 id("loading")
             }
-            false -> buildList()
+            false -> {
+                buildList(resources, onEntryClick)
+                buildPaginationButtons(hasNext, hasPrevious, resources, onNextClick, onPreviousClick)
+            }
         }
     }
 
-    private fun buildList() {
-        val onEntryClick = onEntryClick
-        val onPreviousClick = onPreviousClick
-        val onNextClick = onNextClick
-        val resources = resources
-
+    private fun buildList(resources: Resources, onEntryClick: (String) -> Unit) {
         pokemonList.forEach { pokemon ->
             pokemonListEntry {
                 id("pokedetails${pokemon.name}")
@@ -45,10 +43,12 @@ class AllPokemonController(
                 resources(resources)
             }
         }
+    }
 
-        val hasNext = hasNext
-        val hasPrevious = hasPrevious
-
+    private fun buildPaginationButtons(
+        hasNext: Boolean, hasPrevious: Boolean, resources: Resources,
+        onNextClick: () -> Unit, onPreviousClick: () -> Unit
+    ) {
         paginationButton {
             id("paginationButtons")
             hasNext(hasNext)
