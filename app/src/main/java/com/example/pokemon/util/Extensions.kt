@@ -2,6 +2,8 @@ package com.example.pokemon.util
 
 import android.net.Uri
 import android.widget.ImageView
+import com.airbnb.epoxy.EpoxyController
+import com.example.pokemon.presentation.common.heightSpacing
 import com.squareup.picasso.Picasso
 
 fun ImageView.loadImage(imageUrl: String?) {
@@ -18,6 +20,12 @@ fun String.extractLastUrlParam(): String? {
 
 fun String.extractQueryParameter(param: String): String? {
     return Uri.parse(this).getQueryParameter(param)
+}
+
+fun EpoxyController.insertHeightSpacing(id: String) {
+    heightSpacing {
+        id("id")
+    }
 }
 
 inline fun <T1 : Any, T2 : Any, R : Any> safeLet(p1: T1?, p2: T2?, block: (T1, T2) -> R?): R? {

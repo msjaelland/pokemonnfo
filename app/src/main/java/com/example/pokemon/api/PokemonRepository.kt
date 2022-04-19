@@ -3,6 +3,7 @@ package com.example.pokemon.api
 import com.example.pokemon.models.entity.AbilityDetailed
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
+import com.example.pokemon.models.entity.Species
 
 class PokemonRepository {
     private val pokemonApi: PokemonAPI = PokemonAPI.create()
@@ -17,5 +18,9 @@ class PokemonRepository {
 
     suspend fun getAbility(id: String): AbilityDetailed {
         return pokemonApi.getAbility(id)
+    }
+
+    suspend fun getSpecies(id: String): Species {
+        return pokemonApi.getSpecies(id)
     }
 }

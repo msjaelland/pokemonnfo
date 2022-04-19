@@ -6,15 +6,30 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="poke_details_fragment_label">Pokemon Details</string>
     <string name="all_pokemon_fragment_label">All Pokemon</string>
-    <string name="Next">Next</string>
-    <string name="Previous">Previous</string>
 
-    <string name="Details">Details</string>
-    <string name="List">List</string>
-
+    <!-- List -->
     <string name="base_experience">Base exp:</string>
     <string name="hp">HP:</string>
 
-    <string name="base_stats">Base stats</string>
-    <string name="abilities">Abilities</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="details">Details</string>
+    <string name="list">List</string>
+
+    <!-- Details -->
+    <string name="species">Species</string>
+    <string name="species_growth_rate">Growth Rate</string>
+    <string name="species_base_happiness">Base Happiness</string>
+    <string name="species_capture_rate">Capture Rate</string>
+    <string name="species_habitat">Habitat</string>
+
+    <string name="section_base_stats">Base stats</string>
+    <string name="section_abilities">Abilities</string>
+    <string name="section_general_info">General Pokemon Info</string>
+
+    <string name="stat_total">Total</string>
+    <string name="stat_weight">Weight</string>
+    <string name="stat_height">Height</string>
+
 </resources>

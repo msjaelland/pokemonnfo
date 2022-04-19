@@ -16,34 +16,6 @@ import com.example.pokemon.util.addZeroPadding
 import com.example.pokemon.util.loadImage
 
 @EpoxyModelClass
-abstract class PokemonName : EpoxyModelWithHolder<PokemonName.ViewHolder>() {
-    override fun getDefaultLayout(): Int = R.layout.item_poke_details
-
-    @EpoxyAttribute
-    var name: String? = null
-
-    @EpoxyAttribute
-    var onClick: () -> Unit = {}
-
-    override fun bind(holder: ViewHolder) {
-        super.bind(holder)
-
-        with(holder) {
-            name?.let {
-                pokeNameTv.text = it
-                pokeNameTv.setOnClickListener {
-                    onClick()
-                }
-            }
-        }
-    }
-
-    inner class ViewHolder : KotlinEpoxyHolder() {
-        val pokeNameTv: TextView by bind(R.id.pokeDetailsName)
-    }
-}
-
-@EpoxyModelClass
 abstract class PokemonListEntryModel : EpoxyModelWithHolder<PokemonListEntryModel.ViewHolder>() {
     override fun getDefaultLayout(): Int = R.layout.item_poke_list_entry
 
@@ -85,6 +57,9 @@ abstract class PokemonListEntryModel : EpoxyModelWithHolder<PokemonListEntryMode
             pokemonType {
                 id("pokemon:${pokemon?.id}type:${type.type?.name}")
                 type(type)
+                resources?.let {
+                    backgroundColour(type.getColour(it))
+                }
             }
         }
     }
@@ -133,11 +108,11 @@ abstract class PaginationButtonModel : EpoxyModelWithHolder<PaginationButtonMode
             previousBtn.isVisible = hasPrevious
             nextButton.isVisible = hasNext
 
-            previousBtn.text = resources?.getString(R.string.Previous)
+            previousBtn.text = resources?.getString(R.string.previous)
             previousBtn.setOnClickListener {
                 onPreviousClick.invoke()
             }
-            nextButton.text = resources?.getString(R.string.Next)
+            nextButton.text = resources?.getString(R.string.next)
             nextButton.setOnClickListener {
                 onNextClick.invoke()
             }
@@ -157,6 +132,9 @@ abstract class PokemonTypeModel : EpoxyModelWithHolder<PokemonTypeModel.ViewHold
     @EpoxyAttribute
     var type: Type? = null
 
+    @EpoxyAttribute
+    var backgroundColour: Int? = null
+
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
 
@@ -164,10 +142,15 @@ abstract class PokemonTypeModel : EpoxyModelWithHolder<PokemonTypeModel.ViewHold
             type?.let {
                 pokemonTypeTv.text = type?.type?.name
             }
+            backgroundColour?.let {
+                backgroundCl.setBackgroundColor(it)
+            }
         }
     }
 
     inner class ViewHolder : KotlinEpoxyHolder() {
         val pokemonTypeTv: TextView by bind(R.id.pokemonTypeTv)
+        val backgroundCl: ConstraintLayout by bind(R.id.pokemonTypeBackgroundCl)
+
     }
 }

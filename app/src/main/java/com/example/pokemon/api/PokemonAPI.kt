@@ -3,6 +3,7 @@ package com.example.pokemon.api
 import com.example.pokemon.models.entity.AbilityDetailed
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
+import com.example.pokemon.models.entity.Species
 import com.example.pokemon.util.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,6 +24,9 @@ interface PokemonAPI {
 
     @GET("ability/{id}")
     suspend fun getAbility(@Path("id") id: String): AbilityDetailed
+
+    @GET("pokemon-species/{id}")
+    suspend fun getSpecies(@Path("id") id: String): Species
 
     companion object {
         fun create(): PokemonAPI {

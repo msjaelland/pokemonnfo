@@ -1,35 +1,43 @@
 package com.example.pokemon.presentation.details
 
 import android.content.res.Resources
+import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
 import com.example.pokemon.presentation.epoxy.KotlinEpoxyHolder
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.pokemon.R
 import com.example.pokemon.models.entity.Effect
 import com.example.pokemon.models.entity.Stat
+import com.example.pokemon.util.loadImage
 
 @EpoxyModelClass
-abstract class PokemonStatsModel : EpoxyModelWithHolder<PokemonStatsModel.ViewHolder>() {
+abstract class PokemonStatModel : EpoxyModelWithHolder<PokemonStatModel.ViewHolder>() {
     override fun getDefaultLayout(): Int = R.layout.item_poke_stat
 
     @EpoxyAttribute
-    var stat: Stat? = null
+    var icon: Drawable? = null
 
     @EpoxyAttribute
-    var resources: Resources? = null
+    var name: String? = null
+
+    @EpoxyAttribute
+    var value: String? = null
 
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
 
         with(holder) {
-            pokeStatTv.text = stat?.stat?.name
-            pokeStatValueTv.text = stat?.base_stat.toString()
-            resources?.let {
-                val icon = stat?.getIcon(it)
+            pokeStatTv.text = name
+            pokeStatValueTv.text = value
+            if (icon != null) {
                 statIconIv.setImageDrawable(icon)
+            } else {
+                statIconIv.visibility = View.GONE
             }
         }
     }
@@ -83,6 +91,35 @@ abstract class SectionHeaderModel : EpoxyModelWithHolder<SectionHeaderModel.View
 
     inner class ViewHolder : KotlinEpoxyHolder() {
         val sectionHeaderTv: TextView by bind(R.id.sectionHeaderTv)
+
+    }
+}
+
+@EpoxyModelClass
+abstract class DetailsHeaderImageModel :
+    EpoxyModelWithHolder<DetailsHeaderImageModel.ViewHolder>() {
+    override fun getDefaultLayout(): Int = R.layout.item_poke_details_header
+
+    @EpoxyAttribute
+    var imageUrl: String? = null
+
+    @EpoxyAttribute
+    var backgroundColour: Int? = null
+
+    override fun bind(holder: ViewHolder) {
+        super.bind(holder)
+
+        with(holder) {
+            pokeDetailsHeaderIv.loadImage(imageUrl)
+            backgroundColour?.let {
+                pokeDetailHeaderBackgroundCl.setBackgroundColor(it)
+            }
+        }
+    }
+
+    inner class ViewHolder : KotlinEpoxyHolder() {
+        val pokeDetailHeaderBackgroundCl: ConstraintLayout by bind(R.id.pokeDetailHeaderBackGroundCl)
+        val pokeDetailsHeaderIv: ImageView by bind(R.id.pokeDetailsHeaderIv)
 
     }
 }

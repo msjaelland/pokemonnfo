@@ -27,6 +27,9 @@
         <entry key="app/src/main/res/layout/item_pagination_buttons.xml" value="0.2111111111111111" />
         <entry key="app/src/main/res/layout/item_poke_ability.xml" value="0.3620689655172414" />
         <entry key="app/src/main/res/layout/item_poke_details.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/item_poke_details_general_info.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/item_poke_details_header.xml" value="0.17346014492753623" />
+        <entry key="app/src/main/res/layout/item_poke_details_species_info.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/item_poke_list_entry.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_poke_stat.xml" value="0.1471698113207547" />
         <entry key="app/src/main/res/layout/item_poke_stats.xml" value="0.165" />

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
         binding.pokeDetailsRV.setController(controller)
         observeData()
         arguments?.getString(PokemonIdArg)?.let {
+            setFragmentTitle(it)
             viewModel.getPokemon(it)
         }
         controller.requestModelBuild()
@@ -47,9 +49,14 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
                 controller.isLoading = it.loading
                 controller.pokemon = it.pokemon
                 controller.abilities = it.detailedAbilities
+                controller.species = it.species
                 controller.requestModelBuild()
             }
             .launchIn(lifecycleScope)
+    }
+
+    private fun setFragmentTitle(title: String?){
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = title
     }
 
     override fun onDestroyView() {

@@ -43,11 +43,13 @@ class PokeDetailsViewModel : ViewModel() {
                 detailedAbilities.add(detailedAbility)
             }
         }
+        val species = pokemonRepository.getSpecies(result.id.toString())
 
         _stateFlow.value = _stateFlow.value.copy(
             loading = false,
             pokemon = result,
-            detailedAbilities = detailedAbilities
+            detailedAbilities = detailedAbilities,
+            species = species
         )
     }
 }
