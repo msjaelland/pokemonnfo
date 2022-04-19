@@ -1,10 +1,8 @@
 package com.example.pokemon.presentation.details
 
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
-import com.example.pokemon.presentation.epoxy.KotlinEpoxyHolder
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.epoxy.EpoxyAttribute
@@ -12,7 +10,7 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.pokemon.R
 import com.example.pokemon.models.entity.Effect
-import com.example.pokemon.models.entity.Stat
+import com.example.pokemon.presentation.epoxy.KotlinEpoxyHolder
 import com.example.pokemon.util.loadImage
 
 @EpoxyModelClass
@@ -35,6 +33,7 @@ abstract class PokemonStatModel : EpoxyModelWithHolder<PokemonStatModel.ViewHold
             pokeStatTv.text = name
             pokeStatValueTv.text = value
             if (icon != null) {
+                statIconIv.visibility = View.VISIBLE
                 statIconIv.setImageDrawable(icon)
             } else {
                 statIconIv.visibility = View.GONE

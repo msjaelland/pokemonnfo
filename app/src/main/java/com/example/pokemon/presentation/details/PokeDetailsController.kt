@@ -2,10 +2,11 @@ package com.example.pokemon.presentation.details
 
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
-import androidx.core.content.res.ResourcesCompat
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.R
-import com.example.pokemon.models.entity.*
+import com.example.pokemon.models.entity.AbilityDetailed
+import com.example.pokemon.models.entity.PokemonResponse
+import com.example.pokemon.models.entity.Species
 import com.example.pokemon.presentation.common.loading
 import com.example.pokemon.presentation.common.textEntry
 import com.example.pokemon.util.insertHeightSpacing
@@ -77,6 +78,11 @@ class PokeDetailsController(
             text(species?.getEnglishFlavorText())
         }
         buildStatEntry(
+            "${pokemon?.name}:baseExperience",
+            resources.getString(R.string.base_experience),
+            pokemon?.base_experience.toString()
+        )
+        buildStatEntry(
             "${pokemon?.name}:generalInfoWeight",
             resources.getString(R.string.stat_weight),
             pokemon?.weight.toString()
@@ -122,7 +128,9 @@ class PokeDetailsController(
         }
 
         buildStatEntry(
-            "${pokemon?.name}:totalStats", resources.getString(R.string.stat_total), statTotal.toString(),
+            "${pokemon?.name}:totalStats",
+            resources.getString(R.string.stat_total),
+            statTotal.toString(),
             resources.getDrawable(R.drawable.ic_sum_icon)
         )
         insertHeightSpacing("statsHeightSpacing")

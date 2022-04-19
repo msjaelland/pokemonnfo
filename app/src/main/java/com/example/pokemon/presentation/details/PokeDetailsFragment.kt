@@ -55,7 +55,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
             .launchIn(lifecycleScope)
     }
 
-    private fun setFragmentTitle(title: String?){
+    private fun setFragmentTitle(title: String?) {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = title
     }
 

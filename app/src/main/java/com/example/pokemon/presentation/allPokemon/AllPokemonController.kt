@@ -25,7 +25,13 @@ class AllPokemonController(
             }
             false -> {
                 buildList(resources, onEntryClick)
-                buildPaginationButtons(hasNext, hasPrevious, resources, onNextClick, onPreviousClick)
+                buildPaginationButtons(
+                    hasNext,
+                    hasPrevious,
+                    resources,
+                    onNextClick,
+                    onPreviousClick
+                )
             }
         }
     }

@@ -1,7 +1,6 @@
 package com.example.pokemon.viewModels.allPokemon
 
-import android.net.Uri
-import  androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemon.api.PokemonRepository
 import com.example.pokemon.models.PaginationResult

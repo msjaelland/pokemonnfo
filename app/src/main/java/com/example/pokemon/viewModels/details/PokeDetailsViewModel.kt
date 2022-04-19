@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemon.api.PokemonRepository
 import com.example.pokemon.models.entity.AbilityDetailed
-import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.util.extractLastUrlParam
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
