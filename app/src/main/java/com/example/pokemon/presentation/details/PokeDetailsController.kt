@@ -2,6 +2,7 @@ package com.example.pokemon.presentation.details
 
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
+import androidx.core.content.res.ResourcesCompat
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.R
 import com.example.pokemon.models.entity.*
@@ -26,34 +27,36 @@ class PokeDetailsController(
             false -> {
                 buildHeaderImage(pokemon, resources)
                 buildGeneralInfo(pokemon, species, resources)
-                buildSpecies(species, resources)
+                buildSpecies(pokemon, species, resources)
                 buildStats(resources)
                 buildAbilities(resources)
             }
         }
     }
 
-    private fun buildSpecies(species: Species?, resources: Resources) {
+    private fun buildSpecies(pokemon: PokemonResponse?, species: Species?, resources: Resources) {
         sectionHeader {
             id("speciesSectionHeader")
             text(resources.getString(R.string.species))
         }
 
         buildStatEntry(
-            "habitatId", resources.getString(R.string.species_habitat), species?.habitat?.name
+            "${pokemon?.name}:habitatId",
+            resources.getString(R.string.species_habitat),
+            species?.habitat?.name
         )
         buildStatEntry(
-            "baseHappinessId",
+            "${pokemon?.name}:baseHappinessId",
             resources.getString(R.string.species_base_happiness),
             species?.base_happiness.toString()
         )
         buildStatEntry(
-            "captureRateId",
+            "${pokemon?.name}:captureRateId",
             resources.getString(R.string.species_capture_rate),
             species?.capture_rate.toString()
         )
         buildStatEntry(
-            "growthRateId",
+            "${pokemon?.name}:growthRateId",
             resources.getString(R.string.species_growth_rate),
             species?.growth_rate?.name
         )
@@ -74,12 +77,12 @@ class PokeDetailsController(
             text(species?.getEnglishFlavorText())
         }
         buildStatEntry(
-            "generalInfoWeight",
+            "${pokemon?.name}:generalInfoWeight",
             resources.getString(R.string.stat_weight),
             pokemon?.weight.toString()
         )
         buildStatEntry(
-            "generalInfoHeight",
+            "${pokemon?.name}:generalInfoHeight",
             resources.getString(R.string.stat_height),
             pokemon?.height.toString()
         )
@@ -119,7 +122,7 @@ class PokeDetailsController(
         }
 
         buildStatEntry(
-            "totalStats", resources.getString(R.string.stat_total), statTotal.toString(),
+            "${pokemon?.name}:totalStats", resources.getString(R.string.stat_total), statTotal.toString(),
             resources.getDrawable(R.drawable.ic_sum_icon)
         )
         insertHeightSpacing("statsHeightSpacing")
