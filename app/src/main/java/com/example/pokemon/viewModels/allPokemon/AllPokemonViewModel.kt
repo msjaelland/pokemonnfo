@@ -14,12 +14,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class AllPokemonViewModel : ViewModel() {
+class AllPokemonViewModel(
+    private val pokemonRepository: PokemonRepository
+) : ViewModel() {
     private val _stateFlow = MutableStateFlow(AllPokemonViewState())
     val allPokemonState: StateFlow<AllPokemonViewState> = _stateFlow
 
     private var pagination: PaginationResult = PaginationResult()
-    private val pokemonRepository: PokemonRepository = PokemonRepository()
     private var coroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, _ ->
             _stateFlow.value = _stateFlow.value.copy(

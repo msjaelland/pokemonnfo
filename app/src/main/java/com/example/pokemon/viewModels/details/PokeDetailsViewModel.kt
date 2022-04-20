@@ -10,11 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class PokeDetailsViewModel : ViewModel() {
+class PokeDetailsViewModel(
+    private val pokemonRepository: PokemonRepository
+) : ViewModel() {
     private val _stateFlow = MutableStateFlow(PokeDetailsViewState())
     val pokemonDetails: StateFlow<PokeDetailsViewState> = _stateFlow
 
-    private val pokemonRepository: PokemonRepository = PokemonRepository()
     private var coroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, _ ->
             _stateFlow.value = _stateFlow.value.copy(

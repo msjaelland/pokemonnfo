@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.pokemon.R
@@ -15,6 +14,7 @@ import com.example.pokemon.presentation.details.PokeDetailsFragment
 import com.example.pokemon.viewModels.allPokemon.AllPokemonViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
 
@@ -22,7 +22,7 @@ class AllPokemonFragment : Fragment(R.layout.fragment_all_pokemon) {
     private val binding get() = _binding!!
 
     private val controller by lazy { AllPokemonController(resources) }
-    private val viewModel: AllPokemonViewModel by viewModels()
+    private val viewModel: AllPokemonViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

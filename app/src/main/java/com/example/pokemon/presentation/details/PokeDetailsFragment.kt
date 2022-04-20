@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.pokemon.R
 import com.example.pokemon.databinding.FragmentPokeDetailsBinding
 import com.example.pokemon.viewModels.details.PokeDetailsViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
 
@@ -20,7 +20,7 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
     private val binding get() = _binding!!
 
     private val controller by lazy { PokeDetailsController(resources) }
-    private val viewModel: PokeDetailsViewModel by viewModels()
+    private val viewModel: PokeDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
