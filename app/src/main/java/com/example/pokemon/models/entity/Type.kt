@@ -1,6 +1,7 @@
 package com.example.pokemon.models.entity
 
 import android.content.res.Resources
+import androidx.core.content.res.ResourcesCompat
 import com.example.pokemon.R
 
 data class Type(
@@ -9,25 +10,25 @@ data class Type(
 ) {
     fun getColour(resources: Resources): Int {
         return when (type?.name) {
-            Normal -> resources.getColor(R.color.normal)
-            Fire -> resources.getColor(R.color.fire)
-            Water -> resources.getColor(R.color.water)
-            Electric -> resources.getColor(R.color.electric)
-            Grass -> resources.getColor(R.color.grass)
-            Ice -> resources.getColor(R.color.ice)
-            Fighting -> resources.getColor(R.color.fighting)
-            Poison -> resources.getColor(R.color.poison)
-            Ground -> resources.getColor(R.color.ground)
-            Flying -> resources.getColor(R.color.flying)
-            Psychic -> resources.getColor(R.color.psychic)
-            Bug -> resources.getColor(R.color.bug)
-            Rock -> resources.getColor(R.color.rock)
-            Ghost -> resources.getColor(R.color.ghost)
-            Dragon -> resources.getColor(R.color.dragon)
-            Dark -> resources.getColor(R.color.dark)
-            Steel -> resources.getColor(R.color.steel)
-            Fairy -> resources.getColor(R.color.fairy)
-            else -> resources.getColor(R.color.normal)
+            Normal -> ResourcesCompat.getColor(resources, R.color.normal, null)
+            Fire -> ResourcesCompat.getColor(resources, R.color.fire, null)
+            Water -> ResourcesCompat.getColor(resources, R.color.water, null)
+            Electric -> ResourcesCompat.getColor(resources, R.color.electric, null)
+            Grass -> ResourcesCompat.getColor(resources, R.color.grass, null)
+            Ice -> ResourcesCompat.getColor(resources, R.color.ice, null)
+            Fighting -> ResourcesCompat.getColor(resources, R.color.fighting, null)
+            Poison -> ResourcesCompat.getColor(resources, R.color.poison, null)
+            Ground -> ResourcesCompat.getColor(resources, R.color.ground, null)
+            Flying -> ResourcesCompat.getColor(resources, R.color.flying, null)
+            Psychic -> ResourcesCompat.getColor(resources, R.color.psychic, null)
+            Bug -> ResourcesCompat.getColor(resources, R.color.bug, null)
+            Rock -> ResourcesCompat.getColor(resources, R.color.rock, null)
+            Ghost -> ResourcesCompat.getColor(resources, R.color.ghost, null)
+            Dragon -> ResourcesCompat.getColor(resources, R.color.dragon, null)
+            Dark -> ResourcesCompat.getColor(resources, R.color.dark, null)
+            Steel -> ResourcesCompat.getColor(resources, R.color.steel, null)
+            Fairy -> ResourcesCompat.getColor(resources, R.color.fairy, null)
+            else -> ResourcesCompat.getColor(resources, R.color.normal, null)
         }
     }
 

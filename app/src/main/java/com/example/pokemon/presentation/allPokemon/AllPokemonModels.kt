@@ -60,6 +60,7 @@ abstract class PokemonListEntryModel : EpoxyModelWithHolder<PokemonListEntryMode
                 resources?.let {
                     backgroundColour(type.getColour(it))
                 }
+                onClick(onClick)
             }
         }
     }
@@ -135,6 +136,9 @@ abstract class PokemonTypeModel : EpoxyModelWithHolder<PokemonTypeModel.ViewHold
     @EpoxyAttribute
     var backgroundColour: Int? = null
 
+    @EpoxyAttribute
+    var onClick: () -> Unit = {}
+
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
 
@@ -144,6 +148,9 @@ abstract class PokemonTypeModel : EpoxyModelWithHolder<PokemonTypeModel.ViewHold
             }
             backgroundColour?.let {
                 backgroundCl.setBackgroundColor(it)
+            }
+            backgroundCl.setOnClickListener {
+                onClick.invoke()
             }
         }
     }

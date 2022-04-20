@@ -2,6 +2,7 @@ package com.example.pokemon.presentation.details
 
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
+import androidx.core.content.res.ResourcesCompat
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokemon.R
 import com.example.pokemon.models.entity.AbilityDetailed
@@ -131,7 +132,7 @@ class PokeDetailsController(
             "${pokemon?.name}:totalStats",
             resources.getString(R.string.stat_total),
             statTotal.toString(),
-            resources.getDrawable(R.drawable.ic_sum_icon)
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_sum_icon, null)
         )
         insertHeightSpacing("statsHeightSpacing")
     }
