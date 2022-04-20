@@ -14,17 +14,9 @@ fun Int.addZeroPadding(): String {
     return if (this < 10) "00$this" else if (this < 100) "0$this" else this.toString()
 }
 
-fun String.extractLastUrlParam(): String? {
-    return Uri.parse(this).lastPathSegment
-}
-
-fun String.extractQueryParameter(param: String): String? {
-    return Uri.parse(this).getQueryParameter(param)
-}
-
 fun EpoxyController.insertHeightSpacing(id: String) {
     heightSpacing {
-        id("id")
+        id(id)
     }
 }
 

@@ -7,7 +7,7 @@ import com.example.pokemon.models.PaginationResult
 import com.example.pokemon.models.entity.AllPokemonResponse
 import com.example.pokemon.models.entity.PokemonResponse
 import com.example.pokemon.util.Constants
-import com.example.pokemon.util.extractQueryParameter
+import com.example.pokemon.util.UriUtils
 import com.example.pokemon.util.safeLet
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class AllPokemonViewModel(
-    private val pokemonRepository: PokemonRepository
+    private val pokemonRepository: PokemonRepository,
+    private val uriUtils: UriUtils
 ) : ViewModel() {
     private val _stateFlow = MutableStateFlow(AllPokemonViewState())
     val allPokemonState: StateFlow<AllPokemonViewState> = _stateFlow
@@ -80,14 +81,13 @@ class AllPokemonViewModel(
 
     private fun updatePaginationResult(response: AllPokemonResponse) {
         pagination.nextLimit = if (response.next == null) null else
-            response.next.extractQueryParameter(Limit)?.toInt()
+            uriUtils.extractQueryParameter(response.next, Limit)?.toInt()
         pagination.nextOffset = if (response.next == null) null else
-            response.next.extractQueryParameter(Offset)?.toInt()
+            uriUtils.extractQueryParameter(response.next, Offset)?.toInt()
         pagination.previousLimit = if (response.previous == null) null else
-            response.previous.extractQueryParameter(Limit)?.toInt()
+            uriUtils.extractQueryParameter(response.previous, Limit)?.toInt()
         pagination.previousOffSet = if (response.previous == null) null else
-            response.previous.extractQueryParameter(Offset)?.toInt()
-
+            uriUtils.extractQueryParameter(response.previous, Offset)?.toInt()
     }
 
     companion object {

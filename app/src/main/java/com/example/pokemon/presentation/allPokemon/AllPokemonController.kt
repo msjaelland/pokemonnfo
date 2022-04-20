@@ -42,7 +42,7 @@ class AllPokemonController(
                 id("pokedetails${pokemon.name}")
                 pokemon(pokemon)
                 onClick {
-                    pokemon?.name?.let { name ->
+                    pokemon.name?.let { name ->
                         onEntryClick.invoke(name)
                     }
                 }

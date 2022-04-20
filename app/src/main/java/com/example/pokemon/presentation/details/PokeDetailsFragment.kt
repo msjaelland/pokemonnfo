@@ -38,7 +38,9 @@ class PokeDetailsFragment : Fragment(R.layout.fragment_poke_details) {
         observeData()
         arguments?.getString(PokemonIdArg)?.let {
             setFragmentTitle(it)
-            viewModel.getPokemon(it)
+            if (!viewModel.hasData()){
+                viewModel.getPokemon(it)
+            }
         }
         controller.requestModelBuild()
     }

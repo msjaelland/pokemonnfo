@@ -122,7 +122,7 @@ class PokeDetailsController(
                 "pokemon:$name stat:${stat.stat?.name}",
                 stat.stat?.name, stat.base_stat.toString(), stat.getIcon(resources)
             )
-            stat?.base_stat?.let {
+            stat.base_stat?.let {
                 statTotal += it
             }
         }
