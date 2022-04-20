@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.pokemon.R
 import com.example.pokemon.databinding.ActivityMainBinding
 import com.example.pokemon.di.initKoin
+import org.koin.core.context.stopKoin
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopKoin()
     }
 
     override fun onSupportNavigateUp(): Boolean {
